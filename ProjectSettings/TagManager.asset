@@ -13,13 +13,13 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Environment
+  - PlayerA
+  - PlayerB
+  - EnemyA
+  - EnemyB
+  - WorldA
+  - WorldB
   - 
   - 
   - 
