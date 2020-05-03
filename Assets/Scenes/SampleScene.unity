@@ -132,13 +132,14 @@ GameObject:
   - component: {fileID: 212009787}
   - component: {fileID: 212009786}
   - component: {fileID: 212009784}
+  - component: {fileID: 212009785}
   m_Layer: 0
   m_Name: Ethereal Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &212009784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +160,20 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
+--- !u!114 &212009785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212009783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bec90f08237b494f8645000eb40b415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: d0f519a659b72fd4781026f4cd219f8b, type: 2}
+  smoothTime: 0.5
 --- !u!20 &212009786
 Camera:
   m_ObjectHideFlags: 0
@@ -294,6 +309,7 @@ MonoBehaviour:
   tilemaps:
   - {fileID: 473398275}
   - {fileID: 872284725}
+  fadeTime: 0.5
 --- !u!4 &461056399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4085117527992704438, guid: 2767fb30a30480c4a891f55eadf3c738,
@@ -18846,6 +18862,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -18938,6 +18955,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bec90f08237b494f8645000eb40b415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: d0f519a659b72fd4781026f4cd219f8b, type: 2}
+  smoothTime: 0.5
 --- !u!1 &568904650
 GameObject:
   m_ObjectHideFlags: 0
@@ -46007,6 +46038,7 @@ MonoBehaviour:
   tilemaps:
   - {fileID: 1407726401}
   - {fileID: 568904656}
+  fadeTime: 0.5
 --- !u!1 &1778888475
 GameObject:
   m_ObjectHideFlags: 0
