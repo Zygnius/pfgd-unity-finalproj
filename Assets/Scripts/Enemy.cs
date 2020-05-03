@@ -8,9 +8,14 @@ public class Enemy : Entity
     private SpriteRenderer sr;
 
 #pragma warning disable 0649
+    [Header("Parameters")]
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float damage;
+    [SerializeField] private int damage;
     [SerializeField] private float detectionRange;
+    [SerializeField] private bool maintainDistance;
+    [SerializeField] private float distanceFromPlayer;
+
+    [Header("References")]
     [SerializeField] private PlayerData playerData;
     [SerializeField] private EventRef worldToggleEvent;
     [SerializeField] private GameObject shadow;
@@ -19,6 +24,8 @@ public class Enemy : Entity
     private float stunned = 0;
     private float knockedback = 0;
     private Vector2 knockedbackDirection = Vector2.zero;
+
+    private bool alerted = false;
 
     private void Awake()
     {
@@ -36,6 +43,18 @@ public class Enemy : Entity
         if((playerData.position - (Vector2) transform.position).magnitude < detectionRange && playerData.layer == gameObject.layer && stunned <= 0 && knockedback <= 0)
         {
             rb.velocity = (playerData.position - (Vector2)transform.position).normalized * moveSpeed;
+            if(Vector2.Distance(transform.position, playerData.position) < distanceFromPlayer)
+            {
+                if (maintainDistance)
+                {
+                    rb.velocity = (playerData.position - (Vector2)transform.position).normalized * moveSpeed * -1;
+                }
+                else
+                {
+                    rb.velocity = Vector2.zero;
+                }
+            }
+            alerted = true;
         }
         else if (knockedback > 0)
         {
@@ -45,8 +64,14 @@ public class Enemy : Entity
         else
         {
             rb.velocity = Vector2.zero;
+            alerted = false;
         }
         if (stunned > 0) stunned -= Time.deltaTime;
+    }
+
+    public bool IsAlerted()
+    {
+        return alerted;
     }
 
     private void OnWorldToggle()

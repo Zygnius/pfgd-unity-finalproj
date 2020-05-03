@@ -20,7 +20,8 @@ public class Player : Entity
     [SerializeField] private float attackKnockback;
     [SerializeField] private float dodgeTime;
     [SerializeField] private float dodgeIFrameTime;
-    [SerializeField] private float dodgeDistance;
+    //[SerializeField] private float dodgeDistance;
+    [SerializeField] private float dodgeSpeed;
     [SerializeField] private AnimationCurve dodgeCurve;
     [SerializeField] private float dodgeCooldown;
 
@@ -141,8 +142,8 @@ public class Player : Entity
 
         if (direction == Vector2.zero) direction = lastDirection;
 
-        Vector2 target = (Vector2)transform.position + direction.normalized * dodgeDistance;
-        Vector2 origPos = transform.position;
+        //Vector2 target = (Vector2)transform.position + direction.normalized * dodgeDistance;
+        //Vector2 origPos = transform.position;
         float timer = 0;
 
         while(timer < dodgeTime)
@@ -150,9 +151,12 @@ public class Player : Entity
             yield return new WaitForEndOfFrame();
             timer += Time.deltaTime;
 
-            transform.position = Vector2.Lerp(origPos, target, dodgeCurve.Evaluate(timer / dodgeTime));
+            rb.velocity = direction.normalized * dodgeSpeed * dodgeCurve.Evaluate(timer / dodgeTime);
+            //transform.position = Vector2.Lerp(origPos, target, dodgeCurve.Evaluate(timer / dodgeTime));
             if (timer > dodgeIFrameTime) hurtbox.enabled = true;
         }
+
+        rb.velocity = Vector2.zero;
 
         routine = null;
 

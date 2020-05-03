@@ -45817,36 +45817,45 @@ MonoBehaviour:
   attackKnockback: 1
   dodgeTime: 0.5
   dodgeIFrameTime: 0.4
-  dodgeDistance: 5
+  dodgeSpeed: 15
   dodgeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.5
       inSlope: 1.586575
-      outSlope: 2.396505
+      outSlope: 5.308924
       tangentMode: 1
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.065476194
+      outWeight: 0.06122449
     - serializedVersion: 3
-      time: 0.7
-      value: 0.8
-      inSlope: 0.7374961
-      outSlope: 0.6666666
-      tangentMode: 65
-      weightedMode: 0
-      inWeight: 0.16666669
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
+      time: 0.25
       value: 1
-      inSlope: 0.6666666
-      outSlope: 0.26994526
+      inSlope: 0.0095301485
+      outSlope: 0.0058425744
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.5222222
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: -0
+      outSlope: 0
       tangentMode: 5
       weightedMode: 0
-      inWeight: 0.19583333
+      inWeight: 0.33333334
+      outWeight: 0.48333335
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0.26994526
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.4666667
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
