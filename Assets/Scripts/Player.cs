@@ -7,6 +7,7 @@ public class Player : Entity
     private Rigidbody2D rb;
     private Collider2D playerCollider;
     private SpriteRenderer sprite;
+    private Animator animator;
 
 #pragma warning disable 0649
     [Header("Player Stats")]
@@ -25,6 +26,7 @@ public class Player : Entity
 
     [Header("Player References")]
     [SerializeField] private Hitbox hitbox;
+    [SerializeField] private GameObject sword;
     [SerializeField] private Collider2D hurtbox;
     [SerializeField] private PlayerData playerData;
 #pragma warning restore 0649
@@ -41,6 +43,7 @@ public class Player : Entity
         rb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<Collider2D>();
         sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -55,7 +58,15 @@ public class Player : Entity
         {
             rb.velocity = new Vector2(horizontal_axis * moveSpeed, vertical_axis * moveSpeed);
             if (horizontal_axis != 0) sprite.flipX = horizontal_axis > 0;
-            if(horizontal_axis != 0 || vertical_axis != 0) lastDirection = new Vector2(horizontal_axis, vertical_axis);
+            if (horizontal_axis != 0 || vertical_axis != 0)
+            {
+                lastDirection = new Vector2(horizontal_axis, vertical_axis);
+                animator.SetBool("isRunning", true);
+            }
+            else
+            {
+                animator.SetBool("isRunning", false);
+            }
         }
     }
 
@@ -76,12 +87,17 @@ public class Player : Entity
         Hitbox temp = Instantiate(hitbox, transform.position, Quaternion.Euler(0, 0, angle), transform);
         temp.transform.localPosition = direction.normalized * 1;
         temp.gameObject.layer = gameObject.layer;
+
+        GameObject o = Instantiate(sword, transform.position, Quaternion.Euler(0, 0, angle), transform);
+        o.transform.localPosition = direction.normalized * 1;
+
         LayerMask mask = LayerMask.GetMask("EnemyA", "WorldA");
         if (gameObject.layer == 14) mask = LayerMask.GetMask("EnemyB", "WorldB");
         temp.Initialize(damage, attackKnockback, mask);
 
         yield return new WaitForSeconds(attackTime);
         Destroy(temp.gameObject);
+        Destroy(o);
 
         routine = null;
 
@@ -120,6 +136,8 @@ public class Player : Entity
         GameManager.instance.ToggleWorlds();
         ToggleLayer();
         rb.velocity = Vector2.zero;
+        if (direction.x > 0) animator.SetTrigger("dodgeR");
+        else animator.SetTrigger("dodge");
 
         if (direction == Vector2.zero) direction = lastDirection;
 

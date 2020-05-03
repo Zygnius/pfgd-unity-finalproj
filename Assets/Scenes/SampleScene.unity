@@ -45754,6 +45754,7 @@ GameObject:
   - component: {fileID: 1596595625}
   - component: {fileID: 1596595629}
   - component: {fileID: 1596595630}
+  - component: {fileID: 1596595631}
   m_Layer: 13
   m_Name: Player
   m_TagString: Untagged
@@ -45821,6 +45822,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   dodgeCooldown: 0.4
   hitbox: {fileID: 1095366867830577315, guid: 313bc659070fa9a4cb973bfb8d6591f4, type: 3}
+  sword: {fileID: 8061742690530237948, guid: 2e4b82ad76ae02f45bfd67490116e988, type: 3}
   hurtbox: {fileID: 1778888478}
   playerData: {fileID: 11400000, guid: d0f519a659b72fd4781026f4cd219f8b, type: 2}
 --- !u!50 &1596595626
@@ -45883,7 +45885,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 5140468206933609584, guid: 5531e210571d0c345b0614bfe6d4e91a,
+  m_Sprite: {fileID: 2748404384398773808, guid: f7acd00bfb4ba564ca5d532e2244d91a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -45938,6 +45940,25 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!95 &1596595631
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596595624}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 58f8490b7f4fc344b8bb7ee0184518e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1596600039
 GameObject:
   m_ObjectHideFlags: 0
