@@ -170,9 +170,16 @@ public class Player : Entity
         else gameObject.layer = 13;
     }
 
+    private IEnumerator FlashRed()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.25f);
+        sprite.color = Color.white;
+    }
+
     public override void OnDeath()
     {
-        throw new System.NotImplementedException();
+        LoadManager.instance.LoadScene("GameOver");
     }
 
     public override void OnHit(int amount)
@@ -187,6 +194,6 @@ public class Player : Entity
 
     public override void OnKnockback(float amount, Vector2 direction)
     {
-        throw new System.NotImplementedException();
+        rb.velocity = direction.normalized * amount;
     }
 }

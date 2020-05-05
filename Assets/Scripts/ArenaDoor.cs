@@ -5,40 +5,37 @@ using UnityEngine;
 public class ArenaDoor : MonoBehaviour
 {
     private Arena arena;
+    private GameObject door;
     private Collider2D coll;
-    private SpriteRenderer sr;
 
     private void Awake()
     {
         arena = GetComponentInParent<Arena>();
+        door = transform.GetChild(0).gameObject;
         coll = GetComponent<Collider2D>();
-        sr = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
     {
         arena.onArenaStart.AddListener(OnArenaStart);
         arena.onArenaEnd.AddListener(OnArenaEnd);
-        coll.isTrigger = true;
-        sr.enabled = false;
+        door.SetActive(false);
     }
 
     private void OnArenaStart()
     {
-        coll.isTrigger = false;
-        coll.offset = Vector2.zero;
-        sr.enabled = true;
+        door.SetActive(true);
+        coll.enabled = false;
     }
 
     private void OnArenaEnd()
     {
-        coll.isTrigger = true;
-        coll.enabled = false;
-        sr.enabled = false;
+        door.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        arena.ActivateArena();
+        if(collision.tag == "Player")
+            arena.ActivateArena();
     }
 }

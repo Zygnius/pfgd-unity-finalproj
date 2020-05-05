@@ -25,7 +25,7 @@ public class EnemyRanged : MonoBehaviour
 
     private void Update()
     {
-        if (enemy.IsAlerted())
+        if (enemy.IsAlerted() && !enemy.IsHitstunned())
         {
             if (timer >= fireTime)
             {
@@ -34,6 +34,7 @@ public class EnemyRanged : MonoBehaviour
                 Projectile temp = Instantiate(projectile, transform.position, Quaternion.Euler(0, 0, angle));
                 temp.gameObject.layer = gameObject.layer;
                 temp.Initialize(damage, knockback);
+                timer = 0;
             }
             else
             {

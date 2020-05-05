@@ -40,6 +40,11 @@ PrefabInstance:
       propertyPath: distanceFromPlayer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4085117527992704434, guid: 2767fb30a30480c4a891f55eadf3c738,
+        type: 3}
+      propertyPath: detectionRange
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4085117527992704437, guid: 2767fb30a30480c4a891f55eadf3c738,
         type: 3}
       propertyPath: m_Sprite

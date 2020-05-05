@@ -40,7 +40,7 @@ public class Enemy : Entity
 
     private void Update()
     {
-        if((playerData.position - (Vector2) transform.position).magnitude < detectionRange && playerData.layer == gameObject.layer && stunned <= 0 && knockedback <= 0)
+        if((playerData.position - (Vector2) transform.position).magnitude < detectionRange && playerData.layer == gameObject.layer + 2 && stunned <= 0 && knockedback <= 0)
         {
             rb.velocity = (playerData.position - (Vector2)transform.position).normalized * moveSpeed;
             if(Vector2.Distance(transform.position, playerData.position) < distanceFromPlayer)
@@ -74,6 +74,11 @@ public class Enemy : Entity
         return alerted;
     }
 
+    public bool IsHitstunned()
+    {
+        return stunned > 0 || knockedback > 0;
+    }
+
     private void OnWorldToggle()
     {
         sr.enabled = !sr.enabled;
@@ -97,7 +102,16 @@ public class Enemy : Entity
 
     public override void OnKnockback(float amount, Vector2 direction)
     {
-        knockedback = amount;
+        knockedback += amount;
         knockedbackDirection = direction;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.tag == "Player" && damage > 0)
+        {
+            knockedback += 1;
+            knockedbackDirection = collision.collider.transform.position - transform.position;
+        }
     }
 }
