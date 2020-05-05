@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4085117527992704437}
   - component: {fileID: 4085117527992704434}
   - component: {fileID: 4085117527992704435}
+  - component: {fileID: 7452458057362059674}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: Untagged
@@ -140,8 +141,10 @@ MonoBehaviour:
   _maxHealth: 3
   _isDead: 0
   moveSpeed: 2
-  damage: 1
+  damage: 0
   detectionRange: 10
+  maintainDistance: 0
+  distanceFromPlayer: 0
   playerData: {fileID: 11400000, guid: d0f519a659b72fd4781026f4cd219f8b, type: 2}
   worldToggleEvent: {fileID: 11400000, guid: 64dedbb0e56661a45a2ce01b4b0f8614, type: 2}
   shadow: {fileID: 4085117528111212204}
@@ -158,6 +161,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 4085117527992704434}
+--- !u!114 &7452458057362059674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4085117527992704432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6899123c0a66b40b9b1f926c319fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  knockback: 1
 --- !u!1 &4085117528111212204
 GameObject:
   m_ObjectHideFlags: 0
