@@ -8,11 +8,14 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] private int _currHealth;
     [SerializeField] private int _maxHealth;
     [SerializeField] private bool _isDead;
+    [SerializeField] private float invincibilityTime;
 #pragma warning restore 0649
 
     public int currHealth => _currHealth;
     public int maxHealth => _maxHealth;
     public bool isDead => _isDead;
+
+    private bool invincible = false;
 
     private void Awake()
     {
@@ -22,6 +25,8 @@ public abstract class Entity : MonoBehaviour
 
     public virtual void TakeDamage(int amount)
     {
+        if (invincible) return;
+
         _currHealth -= amount;
         if (amount >= 0) OnHit(amount);
         else OnHeal(-amount);
@@ -32,6 +37,20 @@ public abstract class Entity : MonoBehaviour
             OnDeath();
         }
         else if (_currHealth > _maxHealth) _currHealth = _maxHealth;
+
+        StartCoroutine(invincibilityAfterDamage());
+    }
+
+    private IEnumerator invincibilityAfterDamage()
+    {
+        invincible = true;
+        yield return new WaitForSeconds(invincibilityTime);
+        invincible = false;
+    }
+
+    public float healthPercent()
+    {
+        return _currHealth / (float)_maxHealth;
     }
 
     abstract public void OnDeath();

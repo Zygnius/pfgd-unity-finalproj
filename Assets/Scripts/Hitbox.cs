@@ -15,6 +15,8 @@ public class Hitbox : MonoBehaviour
     private void Awake()
     {
         coll = GetComponent<BoxCollider2D>();
+
+        gameObject.layer = transform.parent.gameObject.layer;
     }
 
     public void Initialize(int damageAmount, float knockbackAmount, LayerMask mask)

@@ -40,7 +40,7 @@ public class Enemy : Entity
 
     private void Update()
     {
-        if((playerData.position - (Vector2) transform.position).magnitude < detectionRange && playerData.layer == gameObject.layer + 2 && stunned <= 0 && knockedback <= 0)
+        if((playerData.position - (Vector2) transform.position).magnitude < detectionRange && playerData.layer == gameObject.layer - 2 && stunned <= 0 && knockedback <= 0)
         {
             rb.velocity = (playerData.position - (Vector2)transform.position).normalized * moveSpeed;
             if(Vector2.Distance(transform.position, playerData.position) < distanceFromPlayer)
@@ -85,6 +85,13 @@ public class Enemy : Entity
         shadow.SetActive(!shadow.activeSelf);
     }
 
+    private IEnumerator FlashRed()
+    {
+        sr.color = Color.red;
+        yield return new WaitForSeconds(0.25f);
+        sr.color = Color.white;
+    }
+
     public override void OnDeath()
     {
         Destroy(gameObject);
@@ -98,6 +105,7 @@ public class Enemy : Entity
     public override void OnHit(int amount)
     {
         stunned += Mathf.Clamp(amount / 2, 0, 2);
+        StartCoroutine(FlashRed());
     }
 
     public override void OnKnockback(float amount, Vector2 direction)
@@ -110,8 +118,9 @@ public class Enemy : Entity
     {
         if(collision.collider.tag == "Player" && damage > 0)
         {
-            knockedback += 1;
-            knockedbackDirection = collision.collider.transform.position - transform.position;
+            knockedback += 0.5f;
+            knockedbackDirection = transform.position - collision.collider.transform.position;
+            stunned += 1;
         }
     }
 }

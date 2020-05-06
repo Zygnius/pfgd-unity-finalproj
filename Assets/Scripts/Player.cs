@@ -166,8 +166,16 @@ public class Player : Entity
 
     private void ToggleLayer()
     {
-        if (gameObject.layer == 13) gameObject.layer = 14;
-        else gameObject.layer = 13;
+        if (gameObject.layer == 9)
+        {
+            gameObject.layer = 10;
+            hurtbox.gameObject.layer = 10;
+        }
+        else
+        {
+            gameObject.layer = 9;
+            hurtbox.gameObject.layer = 9;
+        }
     }
 
     private IEnumerator FlashRed()
@@ -184,7 +192,7 @@ public class Player : Entity
 
     public override void OnHit(int amount)
     {
-        throw new System.NotImplementedException();
+        StartCoroutine(FlashRed());
     }
 
     public override void OnHeal(int amount)

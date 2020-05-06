@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebe8a307dabe6c49ab167f60ee2ba7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 1
+  fireTime: 2
   damage: 1
   knockback: 1
   playerData: {fileID: 11400000, guid: d0f519a659b72fd4781026f4cd219f8b, type: 2}
