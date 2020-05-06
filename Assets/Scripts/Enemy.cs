@@ -83,6 +83,7 @@ public class Enemy : Entity
     {
         sr.enabled = !sr.enabled;
         shadow.SetActive(!shadow.activeSelf);
+        stunned += 0.5f;
     }
 
     private IEnumerator FlashRed()

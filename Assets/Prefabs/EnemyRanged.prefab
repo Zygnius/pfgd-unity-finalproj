@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebe8a307dabe6c49ab167f60ee2ba7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 2
+  fireTime: 1.5
   damage: 1
   knockback: 1
   playerData: {fileID: 11400000, guid: d0f519a659b72fd4781026f4cd219f8b, type: 2}
@@ -44,6 +44,11 @@ PrefabInstance:
         type: 3}
       propertyPath: detectionRange
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085117527992704434, guid: 2767fb30a30480c4a891f55eadf3c738,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4085117527992704437, guid: 2767fb30a30480c4a891f55eadf3c738,
         type: 3}
@@ -112,6 +117,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -5511833224161410507, guid: 5531e210571d0c345b0614bfe6d4e91a,
         type: 3}
+    - target: {fileID: 7204157880951453507, guid: 2767fb30a30480c4a891f55eadf3c738,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2767fb30a30480c4a891f55eadf3c738, type: 3}
 --- !u!1 &960031794806062442 stripped

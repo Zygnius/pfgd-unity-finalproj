@@ -22,7 +22,9 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire1"))
         {
-            player.Attack(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
+            Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            //player.Attack(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
+            player.Attack(direction);
         }
     }
 }

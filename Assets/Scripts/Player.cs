@@ -83,7 +83,7 @@ public class Player : Entity
     private IEnumerator Strike(Vector2 direction)
     {
         if (direction == Vector2.zero) direction = lastDirection;
-        rb.velocity = direction * attackMovement;
+        rb.velocity = direction.normalized * attackMovement;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
         Hitbox temp = Instantiate(hitbox, transform.position, Quaternion.Euler(0, 0, angle), transform);
         temp.transform.localPosition = direction.normalized * 1;
