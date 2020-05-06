@@ -17,7 +17,7 @@ public abstract class Entity : MonoBehaviour
 
     private bool invincible = false;
 
-    private void Awake()
+    private void Start()
     {
         _isDead = false;
         _currHealth = _maxHealth;
